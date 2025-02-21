@@ -68,11 +68,11 @@ if uploaded_files:
         # visualization
         st.subheader("Data Visualization")
         if st.checkbox(f"Show Summary Statistics for {file.name}"):
-            chart_opt = st.selectbox(f"Show Grapg",["Bar" , "Line" , "Area"])
+            
             numeric_columns = df_filtered.select_dtypes(include=['number']).columns.tolist()
             if numeric_columns:
                 graph_column = st.multiselect(f"Select column for visualization ({file.name})",numeric_columns,key=file.name+"graph")
-                if  st.checkbox(f"Show Bar fot {file.name}"):
+                if  st.checkbox(f"Show Bar for {file.name}"):
                     st.bar_chart(df_filtered.set_index(df_filtered.columns[0])[graph_column])
                 if st.checkbox(f"Show Line fot {file.name}"):
                     st.line_chart(df_filtered.set_index(df_filtered.columns[0])[graph_column])
